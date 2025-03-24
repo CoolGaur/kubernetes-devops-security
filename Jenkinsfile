@@ -15,7 +15,7 @@ pipeline {
         } 
       stage('Docker Build and Push') {
             steps {
-              docker.withRegistry('https://index.docker.io/v1/', 'docker-hub') {
+              withDockerRegistry([credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/']) {
                   sh "docker build -t kubernetes-devops-security ."
                   sh "docker tag kubernetes-devops-security coolgaur/maven-wrapper:kubeDevopsSec"
                   sh "docker push coolgaur/maven-wrapper:kubeDevopsSec"
