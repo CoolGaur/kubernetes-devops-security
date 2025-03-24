@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: replace
+      - image: coolgaur/maven-wrapper:kubeDevopsSec
         name: devsecops-container
 ---
 apiVersion: v1
