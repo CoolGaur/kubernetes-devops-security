@@ -17,8 +17,9 @@ pipeline {
             steps {
               withSonarQubeEnv() {
                 sh "mvn clean verify sonar:sonar -Dsonar.projectKey=Numeric-Application -Dsonar.projectName='Numeric-Application'"
-    }
-  }
+              }
+            }
+        }
       stage('Docker Build and Push') {
             steps {
               withDockerRegistry([credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/']) {
