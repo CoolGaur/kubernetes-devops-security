@@ -15,8 +15,7 @@ pipeline {
         } 
       stage('SonarQube Analysis') {
             steps {
-              withSonarQubeEnv(credentialsId: 'SonarQube', installationName: 'SonarQube') {
-                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=Numeric-Application -Dsonar.projectName='Numeric-Application'"
+                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=Numeric-Application -Dsonar.projectName='Numeric-Application' -Dsonar.host.url=http://devsecops-abhi-demo.eastus.cloudapp.azure.com:32064 -Dsonar.token=sqp_d0ab9b893e9307ae267080fc574361df1037922c"
               }
             }
         }
