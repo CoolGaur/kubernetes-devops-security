@@ -15,7 +15,9 @@ pipeline {
         } 
       stage('SonarQube Analysis') {
             steps {
+              withSonarQubeEnv(credentialsId: 'SonarQube') {
                 sh "mvn clean verify sonar:sonar -Dsonar.projectKey=Numeric-Application -Dsonar.projectName='Numeric-Application'"
+              }
             }
         }
       stage('Docker Build and Push') {
